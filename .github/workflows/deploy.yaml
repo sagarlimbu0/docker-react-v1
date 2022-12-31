@@ -8,8 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - 
-        name: Login to Docker HUB
+        name: Checkout
+        uses: actions/checkout@v3 
 
+      - 
+        name: Login to Docker HUB
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
