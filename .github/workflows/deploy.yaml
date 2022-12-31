@@ -22,7 +22,8 @@ jobs:
         run: sudo docker-compose -f docker-compose-dev.yml up
         
       - run: sudo docker-compose -f docker-compose-dev.yml up --build
-    
+      - run: sudo docker-compose -f docker-compose-dev.yml down
+
       - name: Run tests
         run: sudo docker-compose -f docker-compose-dev.yml run test
 
