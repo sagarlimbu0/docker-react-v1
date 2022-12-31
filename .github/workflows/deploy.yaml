@@ -20,7 +20,8 @@ jobs:
  
       - name: build docker image
         run: sudo docker-compose -f docker-compose.dev.yml up
-        run: sudo docker-compose -f docker-compose.dev.yml up --build
+        
+      - run: sudo docker-compose -f docker-compose.dev.yml up --build
     
       - name: Run tests
         run: sudo docker-compose -f docker-compose.dev.yml run test
