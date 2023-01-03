@@ -18,15 +18,15 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
  
-      - name: build docker image
+      #- name: build docker image
         #   run: sudo docker-compose -f docker-compose-dev.yml up
-        
-        run: sudo docker-compose -f docker-compose-dev.yml up --build
+        # run: sudo docker-compose -f docker-compose-dev.yml up --build
+       # - name: Run tests
+       # run: sudo docker-compose -f docker-compose-dev.yml run test
+       #- run: sudo docker-compose -f docker-compose-dev.yml down
 
-      - name: Run tests
-        run: sudo docker-compose -f docker-compose-dev.yml run test
-
-      - run: sudo docker-compose -f docker-compose-dev.yml down
+      - run: docker build -t sagarlimbu0/react-test -f Dockerfile.dev .
+      - run: docker run -e CI=true sagarlimbu0/react-test npm test
 
       - name: Generate deployment package
         run: zip -r deploy.zip . -x '*.git*'
