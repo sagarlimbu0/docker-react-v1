@@ -26,8 +26,7 @@ jobs:
        #- run: sudo docker-compose -f docker-compose-dev.yml down
 
       - run: docker build -t sagarlimbu0/react-test -f Dockerfile.dev .
-      - run: docker run -e CI=true sagarlimbu0/react-test npm test -- --coverage
-
+      - run: docker run -e CI=true sagarlimbu0/react-test npm test
       - name: Generate deployment package
         run: zip -r deploy.zip . -x '*.git*'
 
